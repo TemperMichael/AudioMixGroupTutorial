@@ -11,4 +11,5 @@ import SwiftUI
 @Observable
 class ViewModel {
     
+    var userDefaults = UserDefaultsManager.shared
 }

@@ -11,6 +11,10 @@ import SwiftUI
 struct AudioMixGroupTutorialApp: App {
 
     @State private var viewModel = ViewModel()
+    
+    init() {
+        UserDefaultsManager.shared.register()
+    }
 
     var body: some Scene {
         WindowGroup {
