@@ -1,4 +1,35 @@
 {
+  "05DC082F-4B2E-4ACA-B883-E28FCF9F675E" : {
+    "objectMetadataList" : [
+      [
+        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
+        "Root",
+        "Earth",
+        "geom"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
+        "Root",
+        "Earth"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "0A9B4653-B11E-4D6A-850E-C6FCB621626C" : {
     "objectMetadataList" : [
       [
@@ -15,8 +46,7 @@
     "objectMetadataList" : [
       [
         "1D572CEB-057A-41C3-B575-04C37501A3C0",
-        "Root",
-        "Sphere_Left"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -24,7 +54,8 @@
       },
       [
         "1D572CEB-057A-41C3-B575-04C37501A3C0",
-        "Root"
+        "Root",
+        "Sphere_Left"
       ],
       {
         "isExpanded" : true,
@@ -46,6 +77,27 @@
       [
         "65F6F990-A780-4474-B78B-572E0E4E273D",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "6DB8FA17-D981-4FB4-8D5C-37E418F095A8" : {
+    "objectMetadataList" : [
+      [
+        "6DB8FA17-D981-4FB4-8D5C-37E418F095A8",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "6DB8FA17-D981-4FB4-8D5C-37E418F095A8",
+        "Root",
+        "toy_biplane_idle"
       ],
       {
         "isExpanded" : true,
