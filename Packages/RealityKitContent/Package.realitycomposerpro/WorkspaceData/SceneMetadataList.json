@@ -93,15 +93,6 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "6DB8FA17-D981-4FB4-8D5C-37E418F095A8",
-        "Root",
-        "toy_biplane_idle"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
@@ -233,6 +224,15 @@
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
         "WorldLoop"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Plane"
       ],
       {
         "isExpanded" : true,
