@@ -9,6 +9,16 @@ import RealityKit
 
 public extension Entity {
     
+    var audioLibraryComponent: AudioLibraryComponent? {
+        get { components[AudioLibraryComponent.self] }
+        set { components[AudioLibraryComponent.self] = newValue }
+    }
+    
+    var audioMixGroupsComponent: AudioMixGroupsComponent? {
+        get { components[AudioMixGroupsComponent.self] }
+        set { components[AudioMixGroupsComponent.self] = newValue }
+    }
+    
     var particleEmitterComponent: ParticleEmitterComponent? {
         get { components[ParticleEmitterComponent.self] }
         set { components[ParticleEmitterComponent.self] = newValue }
