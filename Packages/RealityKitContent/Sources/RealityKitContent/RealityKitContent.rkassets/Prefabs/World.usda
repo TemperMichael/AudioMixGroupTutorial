@@ -24,6 +24,110 @@ def Xform "Root"
             }
         )
         {
+            over "stylized"
+            {
+                over "materials"
+                {
+                    over "pasted__earth_atmosphere_stylized_matsg"
+                    {
+                        token outputs:realitykit:vertex
+                        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (375, 100.5)
+
+                        over "earth_atmosphere_stylized_mat_mtlx"
+                        {
+                            float2 ui:nodegraph:node:pos = (105, 100.5)
+                        }
+                    }
+
+                    over "usdpreviewsurface9sg"
+                    {
+                        string inputs:file62:varname (
+                            customData = {
+                                dictionary realitykit = {
+                                    float2 positionInSubgraph = (520.125, 728)
+                                }
+                            }
+                        )
+                        string inputs:file64:varname (
+                            customData = {
+                                dictionary realitykit = {
+                                    float2 positionInSubgraph = (741.625, 728)
+                                }
+                            }
+                        )
+                        string inputs:file65:varname (
+                            customData = {
+                                dictionary realitykit = {
+                                    float2 positionInSubgraph = (963.125, 728)
+                                }
+                            }
+                        )
+                        token outputs:realitykit:vertex
+                        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1395.25, 261)
+
+                        over "file65_mtlx_scale"
+                        {
+                            float2 ui:nodegraph:node:pos = (618.5, 540)
+                        }
+
+                        over "file65_mtlx"
+                        {
+                            float2 ui:nodegraph:node:pos = (350, 540)
+                        }
+
+                        over "file65_mtlx_offset"
+                        {
+                            float2 ui:nodegraph:node:pos = (879.5, 540)
+                        }
+
+                        over "earth_stylized_mat_mtlx"
+                        {
+                            float2 ui:nodegraph:node:pos = (1143.5, 261)
+                        }
+
+                        over "file62_mtlx"
+                        {
+                            float2 ui:nodegraph:node:pos = (879.5, 361.5)
+                        }
+
+                        over "file64_mtlx"
+                        {
+                            float2 ui:nodegraph:node:pos = (618.5, 100.5)
+                            int ui:nodegraph:node:stackingOrder = 27
+                        }
+
+                        over "Lookup_st"
+                        {
+                            float2 ui:nodegraph:node:pos = (91, 351.5)
+                        }
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.205, 0.20500001, 0.20500001)
+                float radius = 0.10250001
+                token shapeType = "Sphere"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0, -1.8626451e-8, -1.8626451e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
         }
     }
 }

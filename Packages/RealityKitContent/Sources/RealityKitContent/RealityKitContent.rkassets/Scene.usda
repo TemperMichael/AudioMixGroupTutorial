@@ -35,7 +35,7 @@ def Xform "Root"
 
     def RealityKitTimeline "PlaneAnimation"
     {
-        reorder nameChildren = ["Track", "Track2", "Track3"]
+        reorder nameChildren = ["Track", "Track2"]
         def RealityKitTrack "Track"
         {
             def RealityKitAction "Orbit"
@@ -60,15 +60,14 @@ def Xform "Root"
             {
                 string actionKind = "spin"
                 int blendLayer = 400
-                double duration = 2
-                uniform token info:id = "24266504-C9D7-49F7-B754-6EDB7B44EBC7"
+                double duration = 3
+                uniform token info:id = "75802567-BD07-478C-A486-197CB5E5CD10"
                 float3 localAxis = (0, 0, 1)
-                double startTime = 0.5
+                double startTime = 1
                 rel target = </Root/Plane>
 
                 def RealityKitStruct "timingFunction"
                 {
-                    token type = "easeInOut"
                 }
             }
         }
@@ -157,36 +156,6 @@ def Xform "Root"
                 double startTime = 0
                 rel timeline = </Root/PlaneLoop>
             }
-        }
-    }
-
-    def RealityKitComponent "RCP_BehaviorsContainer"
-    {
-        rel behaviors = </Root/OnAddedToScene>
-        uniform token info:id = "RCP.BehaviorsContainer"
-    }
-
-    def Preliminary_Behavior "OnAddedToScene"
-    {
-        rel actions = </Root/OnAddedToScene/Action>
-        uniform bool exclusive
-        rel triggers = </Root/OnAddedToScene/Trigger>
-
-        def Preliminary_Trigger "Trigger"
-        {
-            rel affectedObjects = </Root>
-            token info:id = "SceneTransition"
-        }
-
-        def Preliminary_Action "Action"
-        {
-            rel affectedObjects = </Root>
-            rel animationLibraryKey = </Root/FullLoop>
-            rel animationLibraryKeyOverrideKey = </Root/OnAddedToScene/Trigger>
-            token info:id = "PlayTimeline"
-            int loops = 0
-            int performCount = 1
-            token type = "serial"
         }
     }
 }

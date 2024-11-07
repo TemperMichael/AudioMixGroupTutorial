@@ -17,6 +17,7 @@ struct ContentView: View {
         RealityView { content in
             if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
                 viewModel.root.addChild(scene)
+                viewModel.saveAndStartAnimations()
             }
             
             content.add(viewModel.root)
@@ -24,6 +25,15 @@ struct ContentView: View {
         .toolbar {
             sliders
         }
+        .gesture(tapGesture)
+    }
+    
+    var tapGesture: some Gesture {
+        SpatialTapGesture()
+            .targetedToAnyEntity()
+            .onEnded { _ in
+                viewModel.setPlaneState(to: viewModel.isPlaneFlying ? .stopped : .flying)
+            }
     }
     
     var sliders: some ToolbarContent {
