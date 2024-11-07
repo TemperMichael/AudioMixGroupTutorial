@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def RealityKitComponent "AudioLibrary"
+    {
+        uniform token info:id = "RealityKit.AudioLibrary"
+
+        def RealityKitDict "resources"
+        {
+            string[] keys = ["BackgroundMusic.usdz"]
+            rel values = </Root/BackgroundMusic>
+        }
+    }
+
+    def "BackgroundMusic" (
+        active = true
+        prepend references = @BackgroundMusic.usdz@
+    )
+    {
+    }
+}
+

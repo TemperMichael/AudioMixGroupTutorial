@@ -4,7 +4,8 @@
     "Scene.usda",
     "Prefabs\/Plane.usda",
     "Prefabs\/World.usda",
-    "Prefabs\/Utility\/MainAudioMixGroup.usda"
+    "Prefabs\/Utility\/MainAudioMixGroup.usda",
+    "Sounds\/BackgroundMusic.usda"
   ],
   "recentIdentifiers" : {
     "05DC082F-4B2E-4ACA-B883-E28FCF9F675E" : [
@@ -515,5 +516,5 @@
   "sceneViewportBackgroundColors" : {
 
   },
-  "selectedSceneRelativePath" : "Prefabs\/World.usda"
+  "selectedSceneRelativePath" : "Sounds\/BackgroundMusic.usda"
 }
