@@ -1,9 +1,7 @@
 {
-  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
+  "advancedEditorSelectedIdentifier" : "BehaviorsPluginID",
   "openSceneRelativePaths" : [
-    "Scene.usda",
-    "Prefabs\/Plane.usda",
-    "Prefabs\/World.usda"
+    "Scene.usda"
   ],
   "recentIdentifiers" : {
     "6DB8FA17-D981-4FB4-8D5C-37E418F095A8" : [
@@ -284,6 +282,28 @@
     ],
     "D66134B1-3681-4A8E-AFE5-29F257229F3B" : [
       {
+        "date" : 752684535.429956,
+        "title" : "Untitled",
+        "transform" : [
+          0.99868274,
+          1.4246462e-08,
+          -0.051311545,
+          0,
+          -0.016832385,
+          0.94466305,
+          -0.3276103,
+          0,
+          0.048472106,
+          0.32804248,
+          0.9434187,
+          0,
+          0.08616194,
+          0.20445456,
+          0.71057266,
+          1
+        ]
+      },
+      {
         "date" : 752679342.231312,
         "title" : "Untitled",
         "transform" : [
@@ -480,33 +500,11 @@
           1.1742468,
           1
         ]
-      },
-      {
-        "date" : 752631170.032222,
-        "title" : "Untitled",
-        "transform" : [
-          0.99998504,
-          1.32981635e-08,
-          -0.005478605,
-          0,
-          -0.0015969903,
-          0.9565713,
-          -0.29149416,
-          0,
-          0.0052406187,
-          0.29149857,
-          0.956557,
-          0,
-          -0.13013574,
-          0.3557636,
-          1.0990517,
-          1
-        ]
       }
     ]
   },
   "sceneViewportBackgroundColors" : {
 
   },
-  "selectedSceneRelativePath" : "Prefabs\/Plane.usda"
+  "selectedSceneRelativePath" : "Scene.usda"
 }

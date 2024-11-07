@@ -24,15 +24,6 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "World" (
-        active = true
-        references = @Prefabs/World.usda@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
     def RealityKitTimeline "PlaneAnimation"
     {
         reorder nameChildren = ["Track", "Track2"]
@@ -157,6 +148,15 @@ def Xform "Root"
                 rel timeline = </Root/PlaneLoop>
             }
         }
+    }
+
+    def "World" (
+        active = true
+        prepend references = @Prefabs/World.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 
