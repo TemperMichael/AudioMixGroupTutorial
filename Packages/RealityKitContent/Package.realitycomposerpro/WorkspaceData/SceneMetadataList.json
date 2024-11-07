@@ -387,7 +387,10 @@
       ],
       {
         "isExpanded" : true,
-        "isLocked" : false
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/BackgroundMusic"
+        }
       }
     ]
   },
