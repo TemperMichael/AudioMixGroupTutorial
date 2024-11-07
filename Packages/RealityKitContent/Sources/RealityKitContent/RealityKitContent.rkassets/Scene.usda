@@ -9,28 +9,185 @@ reorder rootPrims = ["Root", "GridMaterial"]
 
 def Xform "Root"
 {
-    reorder nameChildren = ["GridMaterial", "Sphere"]
+    reorder nameChildren = ["GridMaterial", "Sphere", "PlaneAnimation", "PlaneLoop", "WorldAnimation", "WorldLoop", "FullLoop"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
 
     def "Plane" (
         active = true
-        prepend references = @Prefabs/Plane.usda@
+        references = @Prefabs/Plane.usda@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.35, 0, 0)
+        float3 xformOp:translate = (0.35, -0.1, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
     def "World" (
         active = true
-        prepend references = @Prefabs/World.usda@
+        references = @Prefabs/World.usda@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def RealityKitTimeline "PlaneAnimation"
+    {
+        reorder nameChildren = ["Track", "Track2", "Track3"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Orbit"
+            {
+                string actionKind = "orbit"
+                float3 axis = (1, 1, 0)
+                int blendLayer = 300
+                double duration = 6
+                uniform token info:id = "56613DA7-94E3-4EF7-9EC4-8BA0059D9B22"
+                token orbitDirection = "clockwise"
+                bool orientToPath = 1
+                rel pivotEntity = </Root/World>
+                float revolutions = 1
+                double startTime = 0
+                rel target = </Root/Plane>
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 2
+                uniform token info:id = "24266504-C9D7-49F7-B754-6EDB7B44EBC7"
+                float3 localAxis = (0, 0, 1)
+                double startTime = 0.5
+                rel target = </Root/Plane>
+
+                def RealityKitStruct "timingFunction"
+                {
+                    token type = "easeInOut"
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "PlaneLoop"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 6
+                uniform token info:id = "79953C72-E8F0-4078-9A85-0D91BA865729"
+                double loopCount = 0
+                double startTime = 0
+                rel timeline = </Root/PlaneAnimation>
+            }
+        }
+    }
+
+    def RealityKitTimeline "WorldAnimation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 20
+                uniform token info:id = "F5FB4929-DDAF-4446-8421-EBF56ED44DC9"
+                token spinDirection = "counterclockwise"
+                double startTime = 0
+                rel target = </Root/World>
+
+                def RealityKitStruct "timingFunction"
+                {
+                    token type = "linear"
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "WorldLoop"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = 20
+                uniform token info:id = "AE40B623-948E-484D-8720-7F343B88F0C3"
+                double loopCount = 0
+                double startTime = 0
+                rel timeline = </Root/WorldAnimation>
+            }
+        }
+    }
+
+    def RealityKitTimeline "FullLoop"
+    {
+        reorder nameChildren = ["Track", "Track2"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = inf
+                uniform token info:id = "573ACCEE-F43B-4ACA-8220-2C7175907531"
+                double startTime = 0.01015221600688468
+                rel timeline = </Root/WorldLoop>
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Timeline"
+            {
+                string actionKind = "timeline"
+                int blendLayer = 500
+                double duration = inf
+                uniform token info:id = "F81E8840-2B8A-423C-B1F2-EC9189F61215"
+                double startTime = 0
+                rel timeline = </Root/PlaneLoop>
+            }
+        }
+    }
+
+    def RealityKitComponent "RCP_BehaviorsContainer"
+    {
+        rel behaviors = </Root/OnAddedToScene>
+        uniform token info:id = "RCP.BehaviorsContainer"
+    }
+
+    def Preliminary_Behavior "OnAddedToScene"
+    {
+        rel actions = </Root/OnAddedToScene/Action>
+        uniform bool exclusive
+        rel triggers = </Root/OnAddedToScene/Trigger>
+
+        def Preliminary_Trigger "Trigger"
+        {
+            rel affectedObjects = </Root>
+            token info:id = "SceneTransition"
+        }
+
+        def Preliminary_Action "Action"
+        {
+            rel affectedObjects = </Root>
+            rel animationLibraryKey = </Root/FullLoop>
+            rel animationLibraryKeyOverrideKey = </Root/OnAddedToScene/Trigger>
+            token info:id = "PlayTimeline"
+            int loops = 0
+            int performCount = 1
+            token type = "serial"
+        }
     }
 }
 
