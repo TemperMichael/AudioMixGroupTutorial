@@ -7,52 +7,6 @@
         "Earth",
         "geom",
         "stylized",
-        "materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
-        "Root",
-        "Earth",
-        "geom",
-        "stylized"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
-        "Root",
-        "Earth",
-        "geom"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
-        "Root",
-        "Earth",
-        "geom",
-        "stylized",
-        "geo",
-        "lod0"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
-        "Root",
-        "Earth",
-        "geom",
-        "stylized",
         "materials",
         "usdpreviewsurface9sg"
       ],
@@ -64,18 +18,6 @@
         "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
         "Root",
         "Earth"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "05DC082F-4B2E-4ACA-B883-E28FCF9F675E",
-        "Root",
-        "Earth",
-        "geom",
-        "stylized",
-        "geo"
       ],
       {
         "isExpanded" : true,
@@ -153,16 +95,10 @@
       ],
       {
         "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "6DB8FA17-D981-4FB4-8D5C-37E418F095A8",
-        "Root",
-        "toy_biplane_idle"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/PlaneFlying_wav"
+        }
       }
     ]
   },
@@ -193,6 +129,15 @@
       ],
       {
         "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
+        "Root",
+        "Plane"
+      ],
+      {
+        "isExpanded" : false,
         "isLocked" : false
       },
       [
@@ -427,6 +372,18 @@
         "SceneRoot",
         "PlaneAnimation",
         "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "F11632BB-1C00-4DE7-9A8B-7ACED0A81A5B" : {
+    "objectMetadataList" : [
+      [
+        "F11632BB-1C00-4DE7-9A8B-7ACED0A81A5B",
+        "Root"
       ],
       {
         "isExpanded" : true,

@@ -260,5 +260,49 @@ def Xform "Root"
             }
         }
     }
+
+    def RealityKitComponent "AudioLibrary"
+    {
+        uniform token info:id = "RealityKit.AudioLibrary"
+
+        def RealityKitDict "resources"
+        {
+            string[] keys = ["PlaneStart.usdz", "PlaneStop.usdz", "PlaneFlying.wav"]
+            rel values = [
+                </Root/PlaneStart>,
+                </Root/PlaneStop>,
+                </Root/PlaneFlying_wav>,
+            ]
+        }
+    }
+
+    def "PlaneStart" (
+        active = true
+        prepend references = @../Sounds/PlaneStart.usdz@
+    )
+    {
+    }
+
+    def "PlaneStop" (
+        active = true
+        prepend references = @../Sounds/PlaneStop.usdz@
+    )
+    {
+    }
+
+    def RealityKitAudioFile "PlaneFlying_wav"
+    {
+        uniform asset file = @../Sounds/PlaneFlying.wav@
+        uniform bool shouldLoop = 1
+    }
+
+    def "MainAudioMixGroup" (
+        active = true
+        prepend references = @Utility/MainAudioMixGroup.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
 }
 
