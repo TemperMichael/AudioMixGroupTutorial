@@ -102,6 +102,18 @@ def Xform "Root"
                         }
                     }
                 }
+
+                over "geo"
+                {
+                    over "lod0"
+                    {
+                        over "earth_atmosphere_stylized_lod0" (
+                            active = false
+                        )
+                        {
+                        }
+                    }
+                }
             }
         }
 
