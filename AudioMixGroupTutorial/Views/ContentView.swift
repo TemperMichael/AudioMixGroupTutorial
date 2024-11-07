@@ -14,18 +14,23 @@ struct ContentView: View {
     @Environment(ViewModel.self) var viewModel
     
     var body: some View {
-        RealityView { content in
-            if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
-                viewModel.root.addChild(scene)
-                viewModel.saveAndStartAnimations()
+        GeometryReader3D { geometry in
+            RealityView { content in
+                if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
+                    viewModel.root.addChild(scene)
+                    viewModel.saveAndStartAnimations()
+                }
+                
+                content.add(viewModel.root)
             }
-            
-            content.add(viewModel.root)
+            .toolbar {
+                sliders
+            }
+            .gesture(tapGesture)
+            .volumeSizeHandler(root: viewModel.root,
+                               defaultSize: defaultVolumeSize,
+                               currentSize: geometry.size)
         }
-        .toolbar {
-            sliders
-        }
-        .gesture(tapGesture)
     }
     
     var tapGesture: some Gesture {

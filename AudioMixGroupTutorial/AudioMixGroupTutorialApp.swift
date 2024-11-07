@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let defaultVolumeSize = Size3D(width: 1500, height: 1500, depth: 1500)
+
 @main
 struct AudioMixGroupTutorialApp: App {
 
@@ -22,5 +24,6 @@ struct AudioMixGroupTutorialApp: App {
                 .environment(viewModel)
         }
         .windowStyle(.volumetric)
+        .defaultSize(defaultVolumeSize)
     }
 }
