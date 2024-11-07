@@ -26,7 +26,17 @@ def Xform "Root"
         prepend references = @BackgroundMusic.usdz@
     )
     {
+        rel mixGroup = </Root/MainAudioMixGroup/AudioMixGroups/Music>
         uniform bool shouldLoop = 1
+    }
+
+    def "MainAudioMixGroup" (
+        active = true
+        prepend references = @../Prefabs/Utility/MainAudioMixGroup.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

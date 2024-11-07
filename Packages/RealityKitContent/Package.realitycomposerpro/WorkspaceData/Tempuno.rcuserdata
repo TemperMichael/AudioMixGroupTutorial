@@ -1,10 +1,6 @@
 {
   "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
-    "Scene.usda",
-    "Prefabs\/Plane.usda",
-    "Prefabs\/World.usda",
-    "Prefabs\/Utility\/MainAudioMixGroup.usda",
     "Sounds\/BackgroundMusic.usda"
   ],
   "recentIdentifiers" : {
