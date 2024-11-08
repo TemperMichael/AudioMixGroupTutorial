@@ -1,7 +1,8 @@
 {
   "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
-    "Sounds\/BackgroundMusic.usda"
+    "Sounds\/BackgroundMusic.usda",
+    "Prefabs\/Plane.usda"
   ],
   "recentIdentifiers" : {
     "05DC082F-4B2E-4ACA-B883-E28FCF9F675E" : [
