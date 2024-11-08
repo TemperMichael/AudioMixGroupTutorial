@@ -21,6 +21,7 @@ class ViewModel {
     
     private var planeState: PlaneState = .flying
     private var playbackControllers: [AnimationPlaybackController] = []
+    private var audioPlaybackControllers: [String: AudioPlaybackController] = [:]
     
     // Instead of using Behaviors in RCP to start the animations, we start them in code
     // for references to their playback controllers to pause and resume the animations
@@ -29,13 +30,45 @@ class ViewModel {
         startAnimation(for: plane)
         startAnimation(for: sceneRoot, named: planeLoopAnimationName)
         startAnimation(for: sceneRoot, named: worldLoopAnimationName, saveAnimation: false)
+        
+        setPlaneState(to: .flying)
     }
 
     func setPlaneState(to state: PlaneState) {
         guard let plane else { return }
         planeState = state
         
-        playbackControllers.forEach({ isPlaneFlying ? $0.resume() : $0.pause() })
+        switch planeState {
+        case .stopped:
+            playbackControllers.forEach({ $0.speed = 0.5 })
+
+            audioPlaybackControllers[planeFlyingAudioName]?.fade(to: -.infinity, duration: 1)
+            
+            if let stopSound = plane.audioLibraryComponent?.resources[planeStopAudioName] {
+                let stopPlayerController = plane.playAudio(stopSound)
+                stopPlayerController.completionHandler = { [weak self] in
+                    self?.playbackControllers.forEach({ $0.pause() })
+                }
+            }
+        case .flying:
+            playbackControllers.forEach({ $0.resume() })
+
+            if let flyingSound = plane.audioLibraryComponent?.resources[planeFlyingAudioName],
+               let startSound = plane.audioLibraryComponent?.resources[planeStartAudioName] {
+                let flyingAudioController = plane.prepareAudio(flyingSound)
+                flyingAudioController.gain = -.infinity
+                flyingAudioController.play()
+                flyingAudioController.fade(to: 0, duration: 8)
+                
+                audioPlaybackControllers[planeFlyingAudioName] = flyingAudioController
+                
+                let startSoundPlayer = plane.playAudio(startSound)
+                startSoundPlayer.completionHandler = { [weak self] in
+                    self?.playbackControllers.forEach({ $0.speed = 1 })
+                }
+            }
+        }
+
         
         plane.forEachDescendant {
             $0.particleEmitterComponent?.isEmitting = isPlaneFlying
@@ -49,6 +82,7 @@ class ViewModel {
             }
             
             let playbackController = entity.playAnimation(configuredAnimation)
+            playbackController.speed = 0.5
             
             if saveAnimation {
                 playbackControllers.append(playbackController)
