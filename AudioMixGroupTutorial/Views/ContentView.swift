@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader3D { geometry in
             RealityView { content in
-                if let scene = try? await Entity(named: "Scene", in: realityKitContentBundle) {
+                if let scene = try? await Entity(named: sceneName, in: realityKitContentBundle) {
                     viewModel.root.addChild(scene)
                     viewModel.saveAndStartAnimations()
                 }
