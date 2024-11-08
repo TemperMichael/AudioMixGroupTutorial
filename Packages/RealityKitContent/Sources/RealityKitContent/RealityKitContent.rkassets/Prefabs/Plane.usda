@@ -281,6 +281,7 @@ def Xform "Root"
         prepend references = @../Sounds/PlaneStart.usdz@
     )
     {
+        rel mixGroup = </Root/MainAudioMixGroup/AudioMixGroups/Sound>
     }
 
     def "PlaneStop" (
@@ -288,11 +289,13 @@ def Xform "Root"
         prepend references = @../Sounds/PlaneStop.usdz@
     )
     {
+        rel mixGroup = </Root/MainAudioMixGroup/AudioMixGroups/Sound>
     }
 
     def RealityKitAudioFile "PlaneFlying_wav"
     {
         uniform asset file = @../Sounds/PlaneFlying.wav@
+        rel mixGroup = </Root/MainAudioMixGroup/AudioMixGroups/Sound>
         uniform bool shouldLoop = 1
     }
 
