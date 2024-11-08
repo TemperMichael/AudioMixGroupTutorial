@@ -23,6 +23,13 @@ struct ContentView: View {
                 
                 content.add(viewModel.root)
             }
+            .task {
+                if let backgroundMusicEntity = try? await Entity(named: backgroundMusicAudioPath,
+                                                                 in: realityKitContentBundle).children.first,
+                   let backgroundMusic = backgroundMusicEntity.audioLibraryComponent?.resources[backgroundMusicAudioName] {
+                    viewModel.root.playAudio(backgroundMusic)
+                }
+            }
             .toolbar {
                 sliders
             }
