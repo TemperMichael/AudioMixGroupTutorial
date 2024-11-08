@@ -15,6 +15,7 @@ class ViewModel {
     
     var root = Entity()
     var plane: Entity? { root.findEntity(named: planePrefabName) }
+    var mainAudioMixGroup = Entity()
 
     var userDefaults = UserDefaultsManager.shared
     var isPlaneFlying: Bool { planeState == .flying }
@@ -50,6 +51,7 @@ class ViewModel {
                     self?.playbackControllers.forEach({ $0.pause() })
                 }
             }
+            
         case .flying:
             playbackControllers.forEach({ $0.resume() })
 
@@ -68,7 +70,6 @@ class ViewModel {
                 }
             }
         }
-
         
         plane.forEachDescendant {
             $0.particleEmitterComponent?.isEmitting = isPlaneFlying
@@ -87,6 +88,15 @@ class ViewModel {
             if saveAnimation {
                 playbackControllers.append(playbackController)
             }
+        }
+    }
+    
+    func updateAudioMixGroup(named mixGroupName: String, to level: Audio.Decibel, lowestBound: Audio.Decibel = -50) {
+        if var mixGroup = mainAudioMixGroup.audioMixGroupsComponent?.mixGroup(named: mixGroupName) {
+            mixGroup.gain = level
+            mixGroup.isMuted = mixGroup.gain <= lowestBound
+            
+            mainAudioMixGroup.audioMixGroupsComponent?.set(mixGroup)
         }
     }
 }

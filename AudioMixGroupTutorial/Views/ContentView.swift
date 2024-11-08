@@ -19,6 +19,14 @@ struct ContentView: View {
                 if let scene = try? await Entity(named: sceneName, in: realityKitContentBundle) {
                     viewModel.root.addChild(scene)
                     viewModel.saveAndStartAnimations()
+                    
+                    if let mainAudioMixGroup = try? await Entity(named: "Prefabs/Utility/MainAudioMixGroup",
+                                                                 in: realityKitContentBundle).children.first {
+                        viewModel.mainAudioMixGroup = mainAudioMixGroup
+                        viewModel.updateAudioMixGroup(named: "Sound", to: -50 * (1 - Double(viewModel.userDefaults.soundVolume)))
+                        viewModel.updateAudioMixGroup(named: "Music", to: -50 * (1 - Double(viewModel.userDefaults.musicVolume)))
+                        viewModel.root.addChild(viewModel.mainAudioMixGroup)
+                    }
                 }
                 
                 content.add(viewModel.root)
