@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct CustomSlider: View {
+struct CustomSlider<V>: View where V : BinaryFloatingPoint, V.Stride : BinaryFloatingPoint {
     
     @State var text: String
-    @Binding var value: Float
+    @Binding var value: V
+    @State var onChange: (V, V) -> Void
     
     var body: some View {
         VStack {
@@ -22,9 +23,7 @@ struct CustomSlider: View {
             }
             
             Slider(value: $value, in: 0...1)
-            .onChange(of: value) { _, newValue in
-                
-            }
+            .onChange(of: value, onChange)
         }
     }
 }

@@ -62,10 +62,14 @@ struct ContentView: View {
             
             HStack(spacing: 100) {
                 CustomSlider(text: "Music Volume",
-                             value: $bindableViewModel.userDefaults.musicVolume)
+                             value: $bindableViewModel.userDefaults.musicVolume) { _, newValue in
+                    viewModel.updateAudioMixGroup(named: "Music", to: -50 * (1 - Double(newValue)))
+                }
                 
                 CustomSlider(text: "Sound Volume",
-                             value: $bindableViewModel.userDefaults.soundVolume)
+                             value: $bindableViewModel.userDefaults.soundVolume) { _, newValue in
+                    viewModel.updateAudioMixGroup(named: "Sound", to: -50 * (1 - Double(newValue)))
+                }
             }
             .frame(width: 600)
             .padding()
